@@ -1,6 +1,8 @@
+import java.util.*;
+
 public class Card
 {
-    public enum Suit 
+    public enum Suit
     {
         CLUBS,
         DIAMONDS,
@@ -36,7 +38,7 @@ public class Card
             "Queen", //12
             "King" //13
         };
-        final String CARDSUIT[_LENGTH] =
+        final String CARDSUIT[] =
         {
             "Clubs",
             "Diamonds",
@@ -44,7 +46,7 @@ public class Card
             "Spades"
         };
 
-        if((suit < 0) || (suit >= _LENGTH))
+        if((suit.ordinal() < 0) || (suit.ordinal() > 4))
         {
             return "invalid card suit";
         }
@@ -52,6 +54,6 @@ public class Card
         {
             return "invalid card value";
         }
-        return CARDNAME[value] + " of " + CARDSUIT[suit];
+        return CARDNAME[value] + " of " + CARDSUIT[suit.ordinal()];
     } 
 }
