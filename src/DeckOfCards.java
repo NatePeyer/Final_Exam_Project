@@ -2,7 +2,8 @@ import java.lang.Math;
 import java.util.*;
 
 public class DeckOfCards {
-    public Card deck[] = new Card[52];
+    private Card deck[] = new Card[52];
+    private Card deltDeck[] = new Card[52];
 
     public DeckOfCards(Card cardIn) {
         int i = 0;
@@ -14,6 +15,11 @@ public class DeckOfCards {
                     i++;
                 }
             }
+        for(int k = 0; k < deltDeck.length; k++)
+        {
+            deltDeck[k] = null;
+        }
+        System.out.println("New deck created.");
     }
 
     // The shuffle algorithum works by genrating a random number between 0 and 51 and then using that as a cards at i's
@@ -41,6 +47,43 @@ public class DeckOfCards {
             }
             count++;
         }
+    }
+
+    public String dealRemaining()
+    {
+        String returnString = DeckOfCards.toString;
+        return returnString;
+    }
+
+    public String dealNum(int numCardsDeal)
+    {
+        String buildString = "";
+        if(numCardsDeal > deck.length)
+        {
+            System.out.println("Error not enough cards left in the deck.")
+            break;
+        }
+        for(int i = 0; i < numCardsDeal; i++)
+        {
+            deltDeck[i] = deck[i];
+            buildString += deltDeck[i].toString + "\n";
+        }
+        for(int j = numCardsDeal; j < deck.length; j++)
+        {
+            deck[j - numCardsDeal] = deck[j];
+        }
+        private newCardDeck[] = new Card[deck.length - numCardsDeal];
+        for(int k = 0; k < newCardDeck.length; k++)
+        {
+            newCardDeck[k] = deck[k];
+        }
+        deck = newCardDeck;
+    }
+
+    public String numCards()
+    {
+        String returnString = "There are " deck.length + " cards remaining in the deck.";
+        return returnString;
     }
     
     public String toString()
