@@ -7,8 +7,7 @@ public class Card
         CLUBS,
         DIAMONDS,
         HEARTS,
-        SPADES,
-        _LENGTH
+        SPADES
     };
     private Suit suit;
     private int value;
