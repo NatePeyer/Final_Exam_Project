@@ -16,6 +16,9 @@ public class DeckOfCards {
             }
     }
 
+    // The shuffle algorithum works by genrating a random number between 0 and 51 and then using that as a cards at i's
+    // new postion from here the two cards swap and then the program moves on to the next card. This is done twice for
+    // the whole deck as to ensure a complete and fair shuffle.
     public void shuffle()
     {
         boolean run = true;
@@ -24,9 +27,9 @@ public class DeckOfCards {
 
         while(run)
         {
-            if(count == 2)
+            if(count == 1)
             {
-                break;
+                run = false;
             }
 
             for(int i = 0; i < deck.length; i++)
