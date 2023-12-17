@@ -3,26 +3,23 @@ import java.util.*;
 
 public class DeckOfCards {
     private Card deck[] = new Card[52];
-    private Card deltDeck[] = new Card[52];
+    private ArrayList<Card> deltDeck = new ArrayList<Card>();
 
-    public DeckOfCards(Card cardIn) {
+    public DeckOfCards() {
         int i = 0;
         for (Card.Suit j : Card.Suit.values())
-            {
-                for (int k = 1; k <= 13; k++)
-                {
-                    deck[i] = new Card(j,k);
-                    i++;
-                }
-            }
-        for(int k = 0; k < deltDeck.length; k++)
         {
-            deltDeck[k] = null;
+            for (int k = 1; k <= 13; k++)
+            {
+                deck[i] = new Card(j,k);
+                i++;
+            }
         }
+        deltDeck.clear();
         System.out.println("New deck created.");
     }
 
-    // The shuffle algorithum works by genrating a random number between 0 and 51 and then using that as a cards at i's
+    // The shuffle algorithm works by genrating a random number between 0 and 51 and then using that as a cards at i's
     // new postion from here the two cards swap and then the program moves on to the next card. This is done twice for
     // the whole deck as to ensure a complete and fair shuffle.
     public void shuffle()
@@ -31,6 +28,25 @@ public class DeckOfCards {
         int count = 0;
         Card temp;
 
+        // checks to see if deck is whole if not greats a new deck by adding the delt cards to the end of the current deck and then goes through shuffling algorithm
+        if(deck.length != 52)
+        {
+            Card tempDeck[] = new Card[52];
+            for(int i = 0; i < tempDeck.length; i++)
+            {
+                if(i >= deck.length)
+                {
+                    tempDeck[i] = deltDeck.get(0);
+                    deltDeck.remove(0);
+                }
+                else
+                {
+                    tempDeck[i] = deck[i];
+                }
+            }
+            deck = tempDeck;
+        }
+        
         while(run)
         {
             if(count == 1)
@@ -51,8 +67,7 @@ public class DeckOfCards {
 
     public String dealRemaining()
     {
-        String returnString = DeckOfCards.toString;
-        return returnString;
+        return dealNum(deck.length);
     }
 
     public String dealNum(int numCardsDeal)
@@ -60,29 +75,48 @@ public class DeckOfCards {
         String buildString = "";
         if(numCardsDeal > deck.length)
         {
-            System.out.println("Error not enough cards left in the deck.")
-            break;
+            System.out.println("Error not enough cards left in the deck.");
+            return buildString;
         }
         for(int i = 0; i < numCardsDeal; i++)
         {
-            deltDeck[i] = deck[i];
-            buildString += deltDeck[i].toString + "\n";
+            deltDeck.add(i, deck[i]);
+            buildString += deck[i].toString() + "\n";
         }
         for(int j = numCardsDeal; j < deck.length; j++)
         {
             deck[j - numCardsDeal] = deck[j];
         }
-        private newCardDeck[] = new Card[deck.length - numCardsDeal];
+        Card newCardDeck[] = new Card[deck.length - numCardsDeal];
         for(int k = 0; k < newCardDeck.length; k++)
         {
             newCardDeck[k] = deck[k];
         }
         deck = newCardDeck;
+        return buildString;
+    }
+
+    public Card dealCard()
+    {
+        Card deltCard = deck[0];
+        Card newDeck[] = new Card[deck.length-1];
+        for(int i = 0; i < newDeck.length; i++)
+        {
+            newDeck[i] = deck[i + 1];
+        }
+        deltDeck.add(0, deltCard);
+        deck = newDeck;
+        return deltCard;
+    }
+    
+    public int length()
+    {
+        return deck.length; 
     }
 
     public String numCards()
     {
-        String returnString = "There are " deck.length + " cards remaining in the deck.";
+        String returnString = "There are " + deck.length + " cards remaining in the deck.";
         return returnString;
     }
     

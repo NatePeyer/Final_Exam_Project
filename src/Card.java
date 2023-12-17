@@ -1,4 +1,3 @@
-import java.util.*;
 
 public class Card
 {
@@ -18,6 +17,15 @@ public class Card
         value = valueIn;
     }
 
+    public int value(boolean aceHigh)
+    {
+        if((aceHigh == true) && (value == 1))
+        {
+            return 14;
+        }
+        return value;
+    }
+    
     public String toString()
     {
         final String CARDNAME[] = 
