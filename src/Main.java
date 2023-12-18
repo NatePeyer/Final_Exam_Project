@@ -80,6 +80,7 @@ public class Main {
         scan.close();
     }
 
+    //prints menu users interact with.
     public static void showMenu()
     {
         System.out.println("1. Create a deck of cards.");
@@ -106,6 +107,7 @@ public class Main {
             computerCards.add(0, deckIn.dealCard());
         }
 
+        // checks for if one player is out of cards and if so the game ends.
         while((playerCards.size() > 0) && (computerCards.size() > 0))
         {
             rounds++;
@@ -115,8 +117,9 @@ public class Main {
             // cards placed up and stored in sperate list incase of tie.
             Card computerPlayed = computerCards.get(0);
             Card playerPlayed = playerCards.get(0);
+
+            //randomizes the order in which the cards renter the winners deck.
             int ranSpot = (int)(Math.random()*2 + 1);
-            
             if(ranSpot == 1)
             {
                 cardsPlayed.add(0, computerPlayed);
@@ -131,6 +134,7 @@ public class Main {
             playerCards.remove(0);
             
             System.out.println("You played a " + playerPlayed + "\nThe computer played a " + computerPlayed);
+            // checks to see who won the round then adds cards to their deck
             if(playerPlayed.value(true) > computerPlayed.value(true))
             {
                 System.out.println("You won this round.");
@@ -147,8 +151,6 @@ public class Main {
             {
                 System.out.println("You tied cards remain in the middle for next round.");
             }
-            //System.out.println("Players cards: " + playerCards.toString() + " number of cards in hand: " + playerCards.size());
-            //System.out.println("Computers cards: " + computerCards.toString() + " number of cards in hand: " + computerCards.size());
         }
         if(playerCards.size() > 0)
         {
@@ -160,6 +162,7 @@ public class Main {
         }
     }
 
+    // actually playing the game no beating involed in this portion
     public static int blackJackGame(Scanner scan, DeckOfCards deckIn)
     {
         ArrayList<Card> dealerCards = new ArrayList<Card>();
@@ -286,6 +289,7 @@ public class Main {
         }
     }
 
+    //allows you to play mulitple games from the table, reshuffles cards for each game, and implments betting from a bank.
     public static void blackJack(Scanner scan, DeckOfCards deck)
     {
         int winCount = 0;
@@ -302,9 +306,16 @@ public class Main {
 
         while(run)
         {
-            System.out.println(String.format("You have $%.2f avilable to bet how much would you like to place on this game?", playerMoney));
-            playerBeat = scan.nextDouble();
-            scan.nextLine();
+            do
+            {
+                System.out.println(String.format("You have $%.2f avilable to bet how much would you like to place on this game?", playerMoney));
+                playerBeat = scan.nextDouble();
+                scan.nextLine();
+                if(playerBeat > playerMoney)
+                {
+                    System.out.println("You beat more money than you have please beat an ammount of money you actually have.");
+                }
+            } while(playerBeat > playerMoney);
             deck.shuffle();
             int outcome = blackJackGame(scan, deck);
             games++;

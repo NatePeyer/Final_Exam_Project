@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3b002700-5f13-4833-8e12-07878ce2ba03" name="Changes" comment="Fixed errors from last night.">
+    <list default="true" id="3b002700-5f13-4833-8e12-07878ce2ba03" name="Changes" comment="Fixed errors from last night.&#10;Early commit and push to update schools os.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Card.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DeckOfCards.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DeckOfCards.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,7 +70,14 @@
       <option name="project" value="LOCAL" />
       <updated>1702562957276</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Fixed errors from last night.&#10;Early commit and push to update schools os.">
+      <created>1702646840387</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1702646840387</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -85,14 +94,15 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="trying to push for the first time." />
     <MESSAGE value="Fixed errors from last night." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed errors from last night." />
+    <MESSAGE value="Fixed errors from last night.&#10;Early commit and push to update schools os." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed errors from last night.&#10;Early commit and push to update schools os." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/DeckOfCards.java</url>
-          <line>54</line>
+          <line>131</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>

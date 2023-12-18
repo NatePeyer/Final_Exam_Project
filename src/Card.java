@@ -51,7 +51,7 @@ public class Card
     
     public String toString()
     {
-        final String CARDNAME[] = 
+        final String[] CARDNAME =
         {
             "None", //0
             "Ace", //1
@@ -68,7 +68,7 @@ public class Card
             "Queen", //12
             "King" //13
         };
-        final String CARDSUIT[] =
+        final String[] CARDSUIT =
         {
             "Clubs",
             "Diamonds",

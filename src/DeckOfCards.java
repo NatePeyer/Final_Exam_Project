@@ -2,7 +2,7 @@ import java.lang.Math;
 import java.util.*;
 
 public class DeckOfCards {
-    private Card deck[] = new Card[52];
+    private Card[] deck = new Card[52];
     private ArrayList<Card> deltDeck = new ArrayList<Card>();
 
     public DeckOfCards() {
@@ -31,7 +31,7 @@ public class DeckOfCards {
         // checks to see if deck is whole if not greats a new deck by adding the delt cards to the end of the current deck and then goes through shuffling algorithm
         if(deck.length != 52)
         {
-            Card tempDeck[] = new Card[52];
+            Card[] tempDeck = new Card[52];
             for(int i = 0; i < tempDeck.length; i++)
             {
                 if(i >= deck.length)
@@ -87,7 +87,7 @@ public class DeckOfCards {
         {
             deck[j - numCardsDeal] = deck[j];
         }
-        Card newCardDeck[] = new Card[deck.length - numCardsDeal];
+        Card[] newCardDeck = new Card[deck.length - numCardsDeal];
         for(int k = 0; k < newCardDeck.length; k++)
         {
             newCardDeck[k] = deck[k];
@@ -99,7 +99,7 @@ public class DeckOfCards {
     public Card dealCard()
     {
         Card deltCard = deck[0];
-        Card newDeck[] = new Card[deck.length-1];
+        Card[] newDeck = new Card[deck.length-1];
         for(int i = 0; i < newDeck.length; i++)
         {
             newDeck[i] = deck[i + 1];
