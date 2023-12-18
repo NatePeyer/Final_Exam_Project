@@ -28,21 +28,24 @@ public class Card
 
     public int value(int aceValue)
     {
-        if((aceValue != 1) || (aceValue != 11))
+        if((aceValue != 1) && (aceValue != 11))
         {
-            System.out.println("Please enter a valid value for your ace");
+            System.out.println("Please enter a valid value for your ace.");
         }
-        if(aceValue == 1)
+        if(value == 1)
         {
-            return 1;
-        }
-        else if(aceValue == 11)
-        {
-            return 11;
+            return aceValue;
         }
         else
         {
-            return value;
+            if((value == 11) || (value == 12) || (value == 13))
+            {
+                return 10;
+            }
+            else
+            {
+                return value;
+            }
         }
     }
     
