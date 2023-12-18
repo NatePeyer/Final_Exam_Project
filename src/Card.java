@@ -25,6 +25,26 @@ public class Card
         }
         return value;
     }
+
+    public int value(int aceValue)
+    {
+        if((aceValue != 1) || (aceValue != 11))
+        {
+            System.out.println("Please enter a valid value for your ace");
+        }
+        if(aceValue == 1)
+        {
+            return 1;
+        }
+        else if(aceValue == 11)
+        {
+            return 11;
+        }
+        else
+        {
+            return value;
+        }
+    }
     
     public String toString()
     {

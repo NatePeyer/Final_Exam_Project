@@ -59,7 +59,14 @@ public class Main {
                     }       
                     break;
                 case 7:
-                    //black jack
+                    if(deck != null)
+                    {
+                        blackJack(deck);
+                    }
+                    else
+                    {
+                        System.out.println("Please select option one to create a deck and then try again.");
+                    }
                 case 0:
                     run = false;
                     break;
@@ -151,5 +158,77 @@ public class Main {
             System.out.println("The computer won in " + rounds + " rounds. Better luck next time.");
         }
         scan.close();
+    }
+
+    public static void blackJack(DeckOfCards deckIn)
+    {
+        Scanner scan = new Scanner(System.in);
+        ArrayList<Card> dealerCards = new ArrayList<Card>();
+        ArrayList<Card> playerCards = new ArrayList<Card>();
+        int winCount = 0;
+        int loseCount = 0;
+        int games = 0;
+        int playerCardTotal = 0;
+        int dealerCardTotal = 0;
+        double bet = 0;
+        double totalMade = 0;
+        boolean run = true;
+
+        // dealing first two cards
+        for(int i = 0; i < 2; i++)
+        {
+            dealerCards.add(0, deckIn.dealCard());
+            playerCards.add(0, deckIn.dealCard());
+        }
+
+        while(run)
+        {
+            games++;
+            System.out.println("The dealer has a " + dealerCards.get(0).toString() + ".");
+            System.out.println("You have a ");
+            for(int i = 0; i < playerCards.size(); i++)
+            {
+                if(i < (playerCards.size()-2))
+                {
+                    System.out.println(playerCards.get(i).toString() + ",");
+                }
+                else
+                {
+                    System.out.println(playerCards.get(i).toString() +".");
+                }
+            }
+            blackJackMenu();
+            int in = scan.nextInt();
+            scan.nextLine();
+            switch(in)
+            {
+                case 1:
+                    playerCards.add(deckIn.dealCard());
+                    break;
+                case 2:
+                    //Stand
+                    System.out.println("For what value do you want your ace to be: 1 or 11?");
+                    int aceIn = scan.nextInt();
+                    scan.nextLine();
+                    for(int j = 0; j < playerCards.size(); j++)
+                    {
+                        playerCardTotal += playerCards.get(j).value(aceIn);
+                    }
+                    System.out.println("You stand your cards total to: " + playerCardTotal);
+                    break;
+                case 0:
+                    //need to add formater to total made.
+                    System.out.println("You are leaving the table and taking $" + totalMade +".");
+                    System.out.println("You played " + games + " games, and won " + winCount + " games and lost " + loseCount + "games.");
+                    run = false;
+                    break;
+            }
+        }
+    }
+    public static void blackJackMenu()
+    {
+        System.out.println("1. Hit.");
+        System.out.println("2. Stand.");
+        System.out.println("0. Leave the table with your winnings");
     }
 }
